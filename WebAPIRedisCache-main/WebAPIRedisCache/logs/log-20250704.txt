@@ -1,0 +1,364 @@
+2025-07-04 15:04:29.092 -03:00 [INF] Now listening on: https://localhost:7075
+2025-07-04 15:04:29.155 -03:00 [INF] Now listening on: http://localhost:5163
+2025-07-04 15:04:29.466 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-04 15:04:29.470 -03:00 [INF] Hosting environment: Development
+2025-07-04 15:04:29.472 -03:00 [INF] Content root path: C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache
+2025-07-04 15:05:29.006 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7075/cep/09190190 - null null
+2025-07-04 15:05:29.074 -03:00 [INF] Executing endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:05:29.118 -03:00 [INF] Route matched with {action = "GetCep", controller = "Cep"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCep(System.String) on controller WebAPIRedisCache.Controllers.CepController (WebAPIRedisCache).
+2025-07-04 15:05:29.841 -03:00 [INF] Requisição recebida para o CEP: 09190190
+2025-07-04 15:05:29.846 -03:00 [INF] Tentando buscar CEP 09190190 no Redis Cache.
+2025-07-04 15:05:36.851 -03:00 [ERR] Ocorreu um erro inesperado ao processar a requisição para o CEP 09190190.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (5000ms) - Last Connection Exception: AuthenticationFailure on redis-17233.c282.east-us-mz.azure.redns.redis-cloud.com:17233/Interactive, Initializing/NotStarted, last: NONE, origin: ConnectedAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.8.41.44383, command=HMGET, timeout: 5000, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Initializing, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 1, serverEndpoint: redis-17233.c282.east-us-mz.azure.redns.redis-cloud.com:17233, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: LAPTOP-B51INLE7(SE.Redis-v2.8.41.44383), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=0,Free=32767,Min=8,Max=32767), POOL: (Threads=7,QueuedItems=0,CompletedItems=99,Timers=7), v: 2.8.41.44383 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: AuthenticationFailure on redis-17233.c282.east-us-mz.azure.redns.redis-cloud.com:17233/Interactive, Initializing/NotStarted, last: NONE, origin: ConnectedAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.8.41.44383
+ ---> System.Security.Authentication.AuthenticationException: Cannot determine the frame size or a corrupted frame was received.
+   at System.Net.Security.SslStream.GetFrameSize(ReadOnlySpan`1 buffer)
+   at System.Net.Security.SslStream.EnsureFullTlsFrameAsync[TIOAdapter](CancellationToken cancellationToken, Int32 estimatedSize)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at StackExchange.Redis.PhysicalConnection.ConnectedAsync(Socket socket, ILogger log, SocketManager manager) in /_/src/StackExchange.Redis/PhysicalConnection.cs:line 1592
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at ProjetoCep.Api.Extensions.DistributedCacheExtensions.GetAsync[T](IDistributedCache cache, String key) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Extensions\DistributedCacheExtensions.cs:line 10
+   at ProjetoCep.Api.Services.CepService.GetCepInfoAsync(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Services\CepService.cs:line 41
+   at WebAPIRedisCache.Controllers.CepController.GetCep(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Controllers\CepController.cs:line 40
+2025-07-04 15:05:36.960 -03:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-04 15:05:36.981 -03:00 [INF] Executed action WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache) in 7855.0336ms
+2025-07-04 15:05:36.986 -03:00 [INF] Executed endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:05:36.999 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7075/cep/09190190 - 500 null application/json; charset=utf-8 8004.6587ms
+2025-07-04 15:16:40.913 -03:00 [INF] Now listening on: https://localhost:7075
+2025-07-04 15:16:40.971 -03:00 [INF] Now listening on: http://localhost:5163
+2025-07-04 15:16:41.235 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-04 15:16:41.238 -03:00 [INF] Hosting environment: Development
+2025-07-04 15:16:41.240 -03:00 [INF] Content root path: C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache
+2025-07-04 15:16:52.082 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7075/cep/09190190 - null null
+2025-07-04 15:16:52.128 -03:00 [INF] Executing endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:16:52.167 -03:00 [INF] Route matched with {action = "GetCep", controller = "Cep"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCep(System.String) on controller WebAPIRedisCache.Controllers.CepController (WebAPIRedisCache).
+2025-07-04 15:16:52.595 -03:00 [INF] Requisição recebida para o CEP: 09190190
+2025-07-04 15:16:52.599 -03:00 [INF] Tentando buscar CEP 09190190 no Redis Cache.
+2025-07-04 15:17:01.297 -03:00 [ERR] Ocorreu um erro inesperado ao processar a requisição para o CEP 09190190.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (5000ms) - Last Connection Exception: AuthenticationFailure on redis-18644.c56.east-us.azure.redns.redis-cloud.com:18644/Interactive, Initializing/NotStarted, last: NONE, origin: ConnectedAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.8.41.44383, command=HMGET, timeout: 5000, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Initializing, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 1, serverEndpoint: redis-18644.c56.east-us.azure.redns.redis-cloud.com:18644, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: LAPTOP-B51INLE7(SE.Redis-v2.8.41.44383), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=0,Free=32767,Min=8,Max=32767), POOL: (Threads=7,QueuedItems=0,CompletedItems=90,Timers=5), v: 2.8.41.44383 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: AuthenticationFailure on redis-18644.c56.east-us.azure.redns.redis-cloud.com:18644/Interactive, Initializing/NotStarted, last: NONE, origin: ConnectedAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.8.41.44383
+ ---> System.Security.Authentication.AuthenticationException: Cannot determine the frame size or a corrupted frame was received.
+   at System.Net.Security.SslStream.GetFrameSize(ReadOnlySpan`1 buffer)
+   at System.Net.Security.SslStream.EnsureFullTlsFrameAsync[TIOAdapter](CancellationToken cancellationToken, Int32 estimatedSize)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at StackExchange.Redis.PhysicalConnection.ConnectedAsync(Socket socket, ILogger log, SocketManager manager) in /_/src/StackExchange.Redis/PhysicalConnection.cs:line 1592
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at ProjetoCep.Api.Extensions.DistributedCacheExtensions.GetAsync[T](IDistributedCache cache, String key) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Extensions\DistributedCacheExtensions.cs:line 10
+   at ProjetoCep.Api.Services.CepService.GetCepInfoAsync(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Services\CepService.cs:line 41
+   at WebAPIRedisCache.Controllers.CepController.GetCep(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Controllers\CepController.cs:line 40
+2025-07-04 15:17:01.419 -03:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-04 15:17:01.440 -03:00 [INF] Executed action WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache) in 9265.9288ms
+2025-07-04 15:17:01.445 -03:00 [INF] Executed endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:17:01.456 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7075/cep/09190190 - 500 null application/json; charset=utf-8 9381.2817ms
+2025-07-04 15:17:11.657 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7075/cep/08190190 - null null
+2025-07-04 15:17:11.665 -03:00 [INF] Executing endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:17:11.667 -03:00 [INF] Route matched with {action = "GetCep", controller = "Cep"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCep(System.String) on controller WebAPIRedisCache.Controllers.CepController (WebAPIRedisCache).
+2025-07-04 15:17:11.673 -03:00 [INF] Requisição recebida para o CEP: 08190190
+2025-07-04 15:17:11.675 -03:00 [INF] Tentando buscar CEP 08190190 no Redis Cache.
+2025-07-04 15:17:17.446 -03:00 [ERR] Ocorreu um erro inesperado ao processar a requisição para o CEP 08190190.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (5000ms) - Last Connection Exception: AuthenticationFailure on redis-18644.c56.east-us.azure.redns.redis-cloud.com:18644/Interactive, Initializing/NotStarted, last: NONE, origin: ConnectedAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.8.41.44383, command=HMGET, timeout: 5000, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 2, serverEndpoint: redis-18644.c56.east-us.azure.redns.redis-cloud.com:18644, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: LAPTOP-B51INLE7(SE.Redis-v2.8.41.44383), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=0,Free=32767,Min=8,Max=32767), POOL: (Threads=7,QueuedItems=0,CompletedItems=177,Timers=5), v: 2.8.41.44383 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: AuthenticationFailure on redis-18644.c56.east-us.azure.redns.redis-cloud.com:18644/Interactive, Initializing/NotStarted, last: NONE, origin: ConnectedAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.8.41.44383
+ ---> System.Security.Authentication.AuthenticationException: Cannot determine the frame size or a corrupted frame was received.
+   at System.Net.Security.SslStream.GetFrameSize(ReadOnlySpan`1 buffer)
+   at System.Net.Security.SslStream.EnsureFullTlsFrameAsync[TIOAdapter](CancellationToken cancellationToken, Int32 estimatedSize)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at StackExchange.Redis.PhysicalConnection.ConnectedAsync(Socket socket, ILogger log, SocketManager manager) in /_/src/StackExchange.Redis/PhysicalConnection.cs:line 1592
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at ProjetoCep.Api.Extensions.DistributedCacheExtensions.GetAsync[T](IDistributedCache cache, String key) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Extensions\DistributedCacheExtensions.cs:line 10
+   at ProjetoCep.Api.Services.CepService.GetCepInfoAsync(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Services\CepService.cs:line 41
+   at WebAPIRedisCache.Controllers.CepController.GetCep(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Controllers\CepController.cs:line 40
+2025-07-04 15:17:17.458 -03:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-04 15:17:17.461 -03:00 [INF] Executed action WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache) in 5790.3034ms
+2025-07-04 15:17:17.463 -03:00 [INF] Executed endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:17:17.465 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7075/cep/08190190 - 500 null application/json; charset=utf-8 5807.9142ms
+2025-07-04 15:18:26.988 -03:00 [INF] Now listening on: https://localhost:7075
+2025-07-04 15:18:27.035 -03:00 [INF] Now listening on: http://localhost:5163
+2025-07-04 15:18:27.257 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-04 15:18:27.260 -03:00 [INF] Hosting environment: Development
+2025-07-04 15:18:27.262 -03:00 [INF] Content root path: C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache
+2025-07-04 15:18:33.337 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7075/cep/08190190 - null null
+2025-07-04 15:18:33.395 -03:00 [INF] Executing endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:18:33.430 -03:00 [INF] Route matched with {action = "GetCep", controller = "Cep"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCep(System.String) on controller WebAPIRedisCache.Controllers.CepController (WebAPIRedisCache).
+2025-07-04 15:18:33.897 -03:00 [INF] Requisição recebida para o CEP: 08190190
+2025-07-04 15:18:33.903 -03:00 [INF] Tentando buscar CEP 08190190 no Redis Cache.
+2025-07-04 15:18:40.023 -03:00 [ERR] Ocorreu um erro inesperado ao processar a requisição para o CEP 08190190.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (5000ms) - Last Connection Exception: AuthenticationFailure on redis-18644.c56.east-us.azure.redns.redis-cloud.com:18644/Interactive, Initializing/NotStarted, last: NONE, origin: ConnectedAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.8.41.44383, command=HMGET, timeout: 5000, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 1, serverEndpoint: redis-18644.c56.east-us.azure.redns.redis-cloud.com:18644, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: LAPTOP-B51INLE7(SE.Redis-v2.8.41.44383), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=0,Free=32767,Min=8,Max=32767), POOL: (Threads=6,QueuedItems=0,CompletedItems=91,Timers=5), v: 2.8.41.44383 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: AuthenticationFailure on redis-18644.c56.east-us.azure.redns.redis-cloud.com:18644/Interactive, Initializing/NotStarted, last: NONE, origin: ConnectedAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.8.41.44383
+ ---> System.Security.Authentication.AuthenticationException: Cannot determine the frame size or a corrupted frame was received.
+   at System.Net.Security.SslStream.GetFrameSize(ReadOnlySpan`1 buffer)
+   at System.Net.Security.SslStream.EnsureFullTlsFrameAsync[TIOAdapter](CancellationToken cancellationToken, Int32 estimatedSize)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at StackExchange.Redis.PhysicalConnection.ConnectedAsync(Socket socket, ILogger log, SocketManager manager) in /_/src/StackExchange.Redis/PhysicalConnection.cs:line 1592
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at ProjetoCep.Api.Extensions.DistributedCacheExtensions.GetAsync[T](IDistributedCache cache, String key) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Extensions\DistributedCacheExtensions.cs:line 10
+   at ProjetoCep.Api.Services.CepService.GetCepInfoAsync(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Services\CepService.cs:line 41
+   at WebAPIRedisCache.Controllers.CepController.GetCep(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Controllers\CepController.cs:line 40
+2025-07-04 15:18:40.078 -03:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-04 15:18:40.098 -03:00 [INF] Executed action WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache) in 6659.9885ms
+2025-07-04 15:18:40.103 -03:00 [INF] Executed endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:18:40.111 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7075/cep/08190190 - 500 null application/json; charset=utf-8 6783.5747ms
+2025-07-04 15:19:32.894 -03:00 [INF] Application is shutting down...
+2025-07-04 15:24:26.551 -03:00 [INF] Now listening on: https://localhost:7075
+2025-07-04 15:24:26.671 -03:00 [INF] Now listening on: http://localhost:5163
+2025-07-04 15:24:26.924 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-04 15:24:26.926 -03:00 [INF] Hosting environment: Development
+2025-07-04 15:24:26.927 -03:00 [INF] Content root path: C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache
+2025-07-04 15:24:29.323 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7075/cep/08190190 - null null
+2025-07-04 15:24:29.374 -03:00 [INF] Executing endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:24:29.414 -03:00 [INF] Route matched with {action = "GetCep", controller = "Cep"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCep(System.String) on controller WebAPIRedisCache.Controllers.CepController (WebAPIRedisCache).
+2025-07-04 15:24:30.190 -03:00 [INF] Requisição recebida para o CEP: 08190190
+2025-07-04 15:24:30.194 -03:00 [INF] Tentando buscar CEP 08190190 no banco de dados.
+2025-07-04 15:24:30.199 -03:00 [INF] Buscando CEP 08190190 no MongoDB.
+2025-07-04 15:25:00.439 -03:00 [ERR] Erro ao buscar CEP 08190190 no MongoDB.
+System.TimeoutException: A timeout occurred after 30000ms selecting a server using CompositeServerSelector{ Selectors = ReadPreferenceServerSelector{ ReadPreference = { Mode : Primary } }, LatencyLimitingServerSelector{ AllowedLatencyRange = 00:00:00.0150000 }, OperationsCountServerSelector }. Client view of cluster state is { ClusterId : "1", Type : "ReplicaSet", State : "Disconnected", Servers : [{ ServerId: "{ ClusterId : 1, EndPoint : "Unspecified/ac-jeyclif-shard-00-00.tk0rvhr.mongodb.net:27017" }", EndPoint: "Unspecified/ac-jeyclif-shard-00-00.tk0rvhr.mongodb.net:27017", ReasonChanged: "Heartbeat", State: "Disconnected", ServerVersion: , TopologyVersion: , Type: "Unknown", HeartbeatException: "MongoDB.Driver.MongoConnectionException: An exception occurred while opening a connection to the server.
+ ---> System.Security.Authentication.AuthenticationException: Authentication failed, see inner exception.
+ ---> System.ComponentModel.Win32Exception (0x80090304): A autoridade de segurança local não pode ser contatada
+   --- End of inner exception stack trace ---
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.AuthenticateAsClient(SslClientAuthenticationOptions sslClientAuthenticationOptions)
+   at MongoDB.Driver.Core.Connections.SslStreamFactory.CreateStream(EndPoint endPoint, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Connections.BinaryConnection.OpenHelper(CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at MongoDB.Driver.Core.Connections.BinaryConnection.OpenHelper(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Connections.BinaryConnection.Open(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Servers.ServerMonitor.InitializeConnection(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Servers.ServerMonitor.Heartbeat(CancellationToken cancellationToken)", LastHeartbeatTimestamp: "2025-07-04T18:25:00.2677304Z", LastUpdateTimestamp: "2025-07-04T18:25:00.2677306Z" }, { ServerId: "{ ClusterId : 1, EndPoint : "Unspecified/ac-jeyclif-shard-00-01.tk0rvhr.mongodb.net:27017" }", EndPoint: "Unspecified/ac-jeyclif-shard-00-01.tk0rvhr.mongodb.net:27017", ReasonChanged: "Heartbeat", State: "Disconnected", ServerVersion: , TopologyVersion: , Type: "Unknown", HeartbeatException: "MongoDB.Driver.MongoConnectionException: An exception occurred while opening a connection to the server.
+ ---> System.Security.Authentication.AuthenticationException: Authentication failed, see inner exception.
+ ---> System.ComponentModel.Win32Exception (0x80090304): A autoridade de segurança local não pode ser contatada
+   --- End of inner exception stack trace ---
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.AuthenticateAsClient(SslClientAuthenticationOptions sslClientAuthenticationOptions)
+   at MongoDB.Driver.Core.Connections.SslStreamFactory.CreateStream(EndPoint endPoint, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Connections.BinaryConnection.OpenHelper(CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at MongoDB.Driver.Core.Connections.BinaryConnection.OpenHelper(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Connections.BinaryConnection.Open(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Servers.ServerMonitor.InitializeConnection(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Servers.ServerMonitor.Heartbeat(CancellationToken cancellationToken)", LastHeartbeatTimestamp: "2025-07-04T18:25:00.2518571Z", LastUpdateTimestamp: "2025-07-04T18:25:00.2518573Z" }, { ServerId: "{ ClusterId : 1, EndPoint : "Unspecified/ac-jeyclif-shard-00-02.tk0rvhr.mongodb.net:27017" }", EndPoint: "Unspecified/ac-jeyclif-shard-00-02.tk0rvhr.mongodb.net:27017", ReasonChanged: "Heartbeat", State: "Disconnected", ServerVersion: , TopologyVersion: , Type: "Unknown", HeartbeatException: "MongoDB.Driver.MongoConnectionException: An exception occurred while opening a connection to the server.
+ ---> System.Security.Authentication.AuthenticationException: Authentication failed, see inner exception.
+ ---> System.ComponentModel.Win32Exception (0x80090304): A autoridade de segurança local não pode ser contatada
+   --- End of inner exception stack trace ---
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.AuthenticateAsClient(SslClientAuthenticationOptions sslClientAuthenticationOptions)
+   at MongoDB.Driver.Core.Connections.SslStreamFactory.CreateStream(EndPoint endPoint, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Connections.BinaryConnection.OpenHelper(CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at MongoDB.Driver.Core.Connections.BinaryConnection.OpenHelper(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Connections.BinaryConnection.Open(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Servers.ServerMonitor.InitializeConnection(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Servers.ServerMonitor.Heartbeat(CancellationToken cancellationToken)", LastHeartbeatTimestamp: "2025-07-04T18:24:59.6189442Z", LastUpdateTimestamp: "2025-07-04T18:24:59.6189444Z" }] }.
+   at MongoDB.Driver.Core.Clusters.Cluster.ThrowTimeoutException(IServerSelector selector, ClusterDescription description)
+   at MongoDB.Driver.Core.Clusters.Cluster.WaitForDescriptionChangedAsync(IServerSelector selector, ClusterDescription description, Task descriptionChangedTask, TimeSpan timeout, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Clusters.Cluster.SelectServerAsync(IServerSelector selector, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Clusters.IClusterExtensions.SelectServerAndPinIfNeededAsync(IClusterInternal cluster, ICoreSessionHandle session, IServerSelector selector, IReadOnlyCollection`1 deprioritizedServers, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Bindings.ReadPreferenceBinding.GetReadChannelSourceAsync(IReadOnlyCollection`1 deprioritizedServers, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.RetryableReadContext.InitializeAsync(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.RetryableReadContext.CreateAsync(IReadBinding binding, Boolean retryRequested, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.FindOperation`1.ExecuteAsync(IReadBinding binding, CancellationToken cancellationToken)
+   at MongoDB.Driver.OperationExecutor.ExecuteReadOperationAsync[TResult](IReadBinding binding, IReadOperation`1 operation, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.ExecuteReadOperationAsync[TResult](IClientSessionHandle session, IReadOperation`1 operation, ReadPreference readPreference, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.IAsyncCursorSourceExtensions.FirstOrDefaultAsync[TDocument](IAsyncCursorSource`1 source, CancellationToken cancellationToken)
+   at ProjetoCep.Api.Repositories.CepRepository.GetByCepAsync(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Repositories\CepRepository.cs:line 24
+2025-07-04 15:25:00.605 -03:00 [ERR] Ocorreu um erro inesperado ao processar a requisição para o CEP 08190190.
+System.TimeoutException: A timeout occurred after 30000ms selecting a server using CompositeServerSelector{ Selectors = ReadPreferenceServerSelector{ ReadPreference = { Mode : Primary } }, LatencyLimitingServerSelector{ AllowedLatencyRange = 00:00:00.0150000 }, OperationsCountServerSelector }. Client view of cluster state is { ClusterId : "1", Type : "ReplicaSet", State : "Disconnected", Servers : [{ ServerId: "{ ClusterId : 1, EndPoint : "Unspecified/ac-jeyclif-shard-00-00.tk0rvhr.mongodb.net:27017" }", EndPoint: "Unspecified/ac-jeyclif-shard-00-00.tk0rvhr.mongodb.net:27017", ReasonChanged: "Heartbeat", State: "Disconnected", ServerVersion: , TopologyVersion: , Type: "Unknown", HeartbeatException: "MongoDB.Driver.MongoConnectionException: An exception occurred while opening a connection to the server.
+ ---> System.Security.Authentication.AuthenticationException: Authentication failed, see inner exception.
+ ---> System.ComponentModel.Win32Exception (0x80090304): A autoridade de segurança local não pode ser contatada
+   --- End of inner exception stack trace ---
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.AuthenticateAsClient(SslClientAuthenticationOptions sslClientAuthenticationOptions)
+   at MongoDB.Driver.Core.Connections.SslStreamFactory.CreateStream(EndPoint endPoint, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Connections.BinaryConnection.OpenHelper(CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at MongoDB.Driver.Core.Connections.BinaryConnection.OpenHelper(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Connections.BinaryConnection.Open(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Servers.ServerMonitor.InitializeConnection(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Servers.ServerMonitor.Heartbeat(CancellationToken cancellationToken)", LastHeartbeatTimestamp: "2025-07-04T18:25:00.2677304Z", LastUpdateTimestamp: "2025-07-04T18:25:00.2677306Z" }, { ServerId: "{ ClusterId : 1, EndPoint : "Unspecified/ac-jeyclif-shard-00-01.tk0rvhr.mongodb.net:27017" }", EndPoint: "Unspecified/ac-jeyclif-shard-00-01.tk0rvhr.mongodb.net:27017", ReasonChanged: "Heartbeat", State: "Disconnected", ServerVersion: , TopologyVersion: , Type: "Unknown", HeartbeatException: "MongoDB.Driver.MongoConnectionException: An exception occurred while opening a connection to the server.
+ ---> System.Security.Authentication.AuthenticationException: Authentication failed, see inner exception.
+ ---> System.ComponentModel.Win32Exception (0x80090304): A autoridade de segurança local não pode ser contatada
+   --- End of inner exception stack trace ---
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.AuthenticateAsClient(SslClientAuthenticationOptions sslClientAuthenticationOptions)
+   at MongoDB.Driver.Core.Connections.SslStreamFactory.CreateStream(EndPoint endPoint, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Connections.BinaryConnection.OpenHelper(CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at MongoDB.Driver.Core.Connections.BinaryConnection.OpenHelper(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Connections.BinaryConnection.Open(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Servers.ServerMonitor.InitializeConnection(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Servers.ServerMonitor.Heartbeat(CancellationToken cancellationToken)", LastHeartbeatTimestamp: "2025-07-04T18:25:00.2518571Z", LastUpdateTimestamp: "2025-07-04T18:25:00.2518573Z" }, { ServerId: "{ ClusterId : 1, EndPoint : "Unspecified/ac-jeyclif-shard-00-02.tk0rvhr.mongodb.net:27017" }", EndPoint: "Unspecified/ac-jeyclif-shard-00-02.tk0rvhr.mongodb.net:27017", ReasonChanged: "Heartbeat", State: "Disconnected", ServerVersion: , TopologyVersion: , Type: "Unknown", HeartbeatException: "MongoDB.Driver.MongoConnectionException: An exception occurred while opening a connection to the server.
+ ---> System.Security.Authentication.AuthenticationException: Authentication failed, see inner exception.
+ ---> System.ComponentModel.Win32Exception (0x80090304): A autoridade de segurança local não pode ser contatada
+   --- End of inner exception stack trace ---
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.AuthenticateAsClient(SslClientAuthenticationOptions sslClientAuthenticationOptions)
+   at MongoDB.Driver.Core.Connections.SslStreamFactory.CreateStream(EndPoint endPoint, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Connections.BinaryConnection.OpenHelper(CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at MongoDB.Driver.Core.Connections.BinaryConnection.OpenHelper(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Connections.BinaryConnection.Open(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Servers.ServerMonitor.InitializeConnection(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Servers.ServerMonitor.Heartbeat(CancellationToken cancellationToken)", LastHeartbeatTimestamp: "2025-07-04T18:24:59.6189442Z", LastUpdateTimestamp: "2025-07-04T18:24:59.6189444Z" }] }.
+   at MongoDB.Driver.Core.Clusters.Cluster.ThrowTimeoutException(IServerSelector selector, ClusterDescription description)
+   at MongoDB.Driver.Core.Clusters.Cluster.WaitForDescriptionChangedAsync(IServerSelector selector, ClusterDescription description, Task descriptionChangedTask, TimeSpan timeout, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Clusters.Cluster.SelectServerAsync(IServerSelector selector, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Clusters.IClusterExtensions.SelectServerAndPinIfNeededAsync(IClusterInternal cluster, ICoreSessionHandle session, IServerSelector selector, IReadOnlyCollection`1 deprioritizedServers, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Bindings.ReadPreferenceBinding.GetReadChannelSourceAsync(IReadOnlyCollection`1 deprioritizedServers, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.RetryableReadContext.InitializeAsync(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.RetryableReadContext.CreateAsync(IReadBinding binding, Boolean retryRequested, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.FindOperation`1.ExecuteAsync(IReadBinding binding, CancellationToken cancellationToken)
+   at MongoDB.Driver.OperationExecutor.ExecuteReadOperationAsync[TResult](IReadBinding binding, IReadOperation`1 operation, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.ExecuteReadOperationAsync[TResult](IClientSessionHandle session, IReadOperation`1 operation, ReadPreference readPreference, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.IAsyncCursorSourceExtensions.FirstOrDefaultAsync[TDocument](IAsyncCursorSource`1 source, CancellationToken cancellationToken)
+   at ProjetoCep.Api.Repositories.CepRepository.GetByCepAsync(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Repositories\CepRepository.cs:line 24
+   at ProjetoCep.Api.Services.CepService.GetCepInfoAsync(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Services\CepService.cs:line 53
+   at WebAPIRedisCache.Controllers.CepController.GetCep(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Controllers\CepController.cs:line 40
+2025-07-04 15:25:00.637 -03:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-04 15:25:00.663 -03:00 [INF] Executed action WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache) in 31241.36ms
+2025-07-04 15:25:00.668 -03:00 [INF] Executed endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:25:00.675 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7075/cep/08190190 - 500 null application/json; charset=utf-8 31361.0613ms
+2025-07-04 15:27:17.457 -03:00 [INF] Now listening on: https://localhost:7075
+2025-07-04 15:27:17.506 -03:00 [INF] Now listening on: http://localhost:5163
+2025-07-04 15:27:17.632 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-04 15:27:17.635 -03:00 [INF] Hosting environment: Development
+2025-07-04 15:27:17.637 -03:00 [INF] Content root path: C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache
+2025-07-04 15:27:21.603 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7075/cep/08190190 - null null
+2025-07-04 15:27:21.703 -03:00 [INF] Executing endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:27:21.790 -03:00 [INF] Route matched with {action = "GetCep", controller = "Cep"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCep(System.String) on controller WebAPIRedisCache.Controllers.CepController (WebAPIRedisCache).
+2025-07-04 15:27:22.642 -03:00 [INF] Requisição recebida para o CEP: 08190190
+2025-07-04 15:27:22.651 -03:00 [INF] Bancos de dados locais (Cache e MongoDB) desativados. Consultando diretamente a BrasilAPI.
+2025-07-04 15:27:22.685 -03:00 [INF] Consultando BrasilAPI para o CEP: 08190190
+2025-07-04 15:27:22.708 -03:00 [INF] Start processing HTTP request GET https://brasilapi.com.br/api/cep/v1/v1/08190190
+2025-07-04 15:27:22.716 -03:00 [INF] Sending HTTP request GET https://brasilapi.com.br/api/cep/v1/v1/08190190
+2025-07-04 15:27:22.953 -03:00 [INF] Received HTTP response headers after 228.8833ms - 404
+2025-07-04 15:27:22.960 -03:00 [INF] End processing HTTP request after 263.2576ms - 404
+2025-07-04 15:27:22.972 -03:00 [WRN] CEP 08190190 não encontrado na BrasilAPI (Status 404).
+2025-07-04 15:27:22.975 -03:00 [WRN] CEP 08190190 não encontrado na BrasilAPI.
+2025-07-04 15:27:23.152 -03:00 [WRN] CEP 08190190 não encontrado.
+ProjetoCep.Api.Exceptions.CepNotFoundException: CEP 08190190 não encontrado.
+   at ProjetoCep.Api.Services.CepService.GetCepInfoAsync(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Services\CepService.cs:line 55
+   at WebAPIRedisCache.Controllers.CepController.GetCep(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Controllers\CepController.cs:line 40
+2025-07-04 15:27:23.208 -03:00 [INF] Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-04 15:27:23.235 -03:00 [INF] Executed action WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache) in 1435.1299ms
+2025-07-04 15:27:23.239 -03:00 [INF] Executed endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:27:23.250 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7075/cep/08190190 - 404 null application/json; charset=utf-8 1665.5545ms
+2025-07-04 15:27:54.929 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7075/cep/08190-190 - null null
+2025-07-04 15:27:54.944 -03:00 [INF] Executing endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:27:54.948 -03:00 [INF] Route matched with {action = "GetCep", controller = "Cep"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCep(System.String) on controller WebAPIRedisCache.Controllers.CepController (WebAPIRedisCache).
+2025-07-04 15:27:54.970 -03:00 [INF] Requisição recebida para o CEP: 08190-190
+2025-07-04 15:27:54.974 -03:00 [WRN] Tentativa de busca com CEP inválido: 08190-190
+2025-07-04 15:27:55.112 -03:00 [WRN] Requisição inválida para o CEP 08190-190.
+System.ArgumentException: Formato de CEP inválido. Use 8 dígitos numéricos.
+   at ProjetoCep.Api.Services.CepService.GetCepInfoAsync(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Services\CepService.cs:line 35
+   at WebAPIRedisCache.Controllers.CepController.GetCep(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Controllers\CepController.cs:line 40
+2025-07-04 15:27:55.118 -03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-04 15:27:55.123 -03:00 [INF] Executed action WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache) in 157.6101ms
+2025-07-04 15:27:55.126 -03:00 [INF] Executed endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:27:55.129 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7075/cep/08190-190 - 400 null application/json; charset=utf-8 200.0081ms
+2025-07-04 15:28:02.005 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7075/cep/08190190 - null null
+2025-07-04 15:28:02.011 -03:00 [INF] Executing endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:28:02.014 -03:00 [INF] Route matched with {action = "GetCep", controller = "Cep"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCep(System.String) on controller WebAPIRedisCache.Controllers.CepController (WebAPIRedisCache).
+2025-07-04 15:28:02.021 -03:00 [INF] Requisição recebida para o CEP: 08190190
+2025-07-04 15:28:02.024 -03:00 [INF] Bancos de dados locais (Cache e MongoDB) desativados. Consultando diretamente a BrasilAPI.
+2025-07-04 15:28:02.025 -03:00 [INF] Consultando BrasilAPI para o CEP: 08190190
+2025-07-04 15:28:02.027 -03:00 [INF] Start processing HTTP request GET https://brasilapi.com.br/api/cep/v1/v1/08190190
+2025-07-04 15:28:02.029 -03:00 [INF] Sending HTTP request GET https://brasilapi.com.br/api/cep/v1/v1/08190190
+2025-07-04 15:28:02.073 -03:00 [INF] Received HTTP response headers after 42.4199ms - 404
+2025-07-04 15:28:02.076 -03:00 [INF] End processing HTTP request after 48.8982ms - 404
+2025-07-04 15:28:02.079 -03:00 [WRN] CEP 08190190 não encontrado na BrasilAPI (Status 404).
+2025-07-04 15:28:02.081 -03:00 [WRN] CEP 08190190 não encontrado na BrasilAPI.
+2025-07-04 15:28:02.153 -03:00 [WRN] CEP 08190190 não encontrado.
+ProjetoCep.Api.Exceptions.CepNotFoundException: CEP 08190190 não encontrado.
+   at ProjetoCep.Api.Services.CepService.GetCepInfoAsync(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Services\CepService.cs:line 55
+   at WebAPIRedisCache.Controllers.CepController.GetCep(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Controllers\CepController.cs:line 40
+2025-07-04 15:28:02.158 -03:00 [INF] Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-04 15:28:02.160 -03:00 [INF] Executed action WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache) in 141.1071ms
+2025-07-04 15:28:02.162 -03:00 [INF] Executed endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:28:02.164 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7075/cep/08190190 - 404 null application/json; charset=utf-8 159.2855ms
+2025-07-04 15:32:30.441 -03:00 [INF] Now listening on: https://localhost:7075
+2025-07-04 15:32:30.496 -03:00 [INF] Now listening on: http://localhost:5163
+2025-07-04 15:32:30.625 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-04 15:32:30.627 -03:00 [INF] Hosting environment: Development
+2025-07-04 15:32:30.630 -03:00 [INF] Content root path: C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache
+2025-07-04 15:32:31.951 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7075/cep/08190190 - null null
+2025-07-04 15:32:32.021 -03:00 [INF] Executing endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:32:32.079 -03:00 [INF] Route matched with {action = "GetCep", controller = "Cep"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCep(System.String) on controller WebAPIRedisCache.Controllers.CepController (WebAPIRedisCache).
+2025-07-04 15:32:32.729 -03:00 [INF] Requisição recebida para o CEP: 08190190
+2025-07-04 15:32:32.734 -03:00 [INF] Bancos de dados locais (Cache e MongoDB) desativados. Consultando diretamente a BrasilAPI.
+2025-07-04 15:32:32.751 -03:00 [INF] Consultando BrasilAPI para o CEP: 08190190
+2025-07-04 15:32:32.763 -03:00 [INF] Start processing HTTP request GET https://brasilapi.com.br/api/cep/v1/08190190
+2025-07-04 15:32:32.769 -03:00 [INF] Sending HTTP request GET https://brasilapi.com.br/api/cep/v1/08190190
+2025-07-04 15:32:33.155 -03:00 [INF] Received HTTP response headers after 380.7942ms - 200
+2025-07-04 15:32:33.160 -03:00 [INF] End processing HTTP request after 403.5532ms - 200
+2025-07-04 15:32:33.196 -03:00 [INF] CEP 08190190 encontrado na BrasilAPI.
+2025-07-04 15:32:33.209 -03:00 [INF] Executing OkObjectResult, writing value of type 'ProjetoCep.Api.Models.CepResponseDto'.
+2025-07-04 15:32:33.232 -03:00 [INF] Executed action WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache) in 1143.0744ms
+2025-07-04 15:32:33.235 -03:00 [INF] Executed endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:32:33.244 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7075/cep/08190190 - 200 null application/json; charset=utf-8 1304.823ms
+2025-07-04 15:37:46.359 -03:00 [INF] Now listening on: https://localhost:7075
+2025-07-04 15:37:46.438 -03:00 [INF] Now listening on: http://localhost:5163
+2025-07-04 15:37:46.756 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-04 15:37:46.758 -03:00 [INF] Hosting environment: Development
+2025-07-04 15:37:46.759 -03:00 [INF] Content root path: C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache
+2025-07-04 15:37:49.786 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7075/cep/08190190 - null null
+2025-07-04 15:37:49.850 -03:00 [INF] Executing endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:37:49.896 -03:00 [INF] Route matched with {action = "GetCep", controller = "Cep"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCep(System.String) on controller WebAPIRedisCache.Controllers.CepController (WebAPIRedisCache).
+2025-07-04 15:37:50.801 -03:00 [INF] Requisição recebida para o CEP: 08190190
+2025-07-04 15:37:50.805 -03:00 [INF] Tentando buscar CEP 08190190 no Redis Cache.
+2025-07-04 15:37:58.435 -03:00 [ERR] Ocorreu um erro inesperado ao processar a requisição para o CEP 08190190.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (5000ms) - Last Connection Exception: AuthenticationFailure on redis-18644.c56.east-us.azure.redns.redis-cloud.com:18644/Interactive, Initializing/NotStarted, last: NONE, origin: ConnectedAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.8.41.44383, command=HMGET, timeout: 5000, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Initializing, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 1, serverEndpoint: redis-18644.c56.east-us.azure.redns.redis-cloud.com:18644, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: LAPTOP-B51INLE7(SE.Redis-v2.8.41.44383), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=0,Free=32767,Min=8,Max=32767), POOL: (Threads=7,QueuedItems=0,CompletedItems=89,Timers=7), v: 2.8.41.44383 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: AuthenticationFailure on redis-18644.c56.east-us.azure.redns.redis-cloud.com:18644/Interactive, Initializing/NotStarted, last: NONE, origin: ConnectedAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.8.41.44383
+ ---> System.Security.Authentication.AuthenticationException: Cannot determine the frame size or a corrupted frame was received.
+   at System.Net.Security.SslStream.GetFrameSize(ReadOnlySpan`1 buffer)
+   at System.Net.Security.SslStream.EnsureFullTlsFrameAsync[TIOAdapter](CancellationToken cancellationToken, Int32 estimatedSize)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at StackExchange.Redis.PhysicalConnection.ConnectedAsync(Socket socket, ILogger log, SocketManager manager) in /_/src/StackExchange.Redis/PhysicalConnection.cs:line 1592
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at ProjetoCep.Api.Extensions.DistributedCacheExtensions.GetAsync[T](IDistributedCache cache, String key) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Extensions\DistributedCacheExtensions.cs:line 10
+   at ProjetoCep.Api.Services.CepService.GetCepInfoAsync(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Services\CepService.cs:line 42
+   at WebAPIRedisCache.Controllers.CepController.GetCep(String cep) in C:\Users\janic\OneDrive\Área de Trabalho\Projetos\Busca_CEP\WebAPIRedisCache-main\WebAPIRedisCache\Controllers\CepController.cs:line 40
+2025-07-04 15:37:58.543 -03:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-04 15:37:58.581 -03:00 [INF] Executed action WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache) in 8673.9456ms
+2025-07-04 15:37:58.590 -03:00 [INF] Executed endpoint 'WebAPIRedisCache.Controllers.CepController.GetCep (WebAPIRedisCache)'
+2025-07-04 15:37:58.601 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7075/cep/08190190 - 500 null application/json; charset=utf-8 8826.2262ms

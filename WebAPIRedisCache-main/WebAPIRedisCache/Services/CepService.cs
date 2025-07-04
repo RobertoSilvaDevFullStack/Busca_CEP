@@ -37,6 +37,7 @@ namespace ProjetoCep.Api.Services
 
             CepEntity? cepEntity = null;
 
+            // Passo 1: Tenta buscar no cache Redis
             _logger.LogInformation("Tentando buscar CEP {Cep} no Redis Cache.", cep);
             cepEntity = await _cache.GetAsync<CepEntity>(cep);
 
@@ -46,17 +47,19 @@ namespace ProjetoCep.Api.Services
                 return CepResponseDto.FromEntity(cepEntity);
             }
 
+            // Passo 2: Se não está no cache, tenta buscar no MongoDB
             _logger.LogInformation("CEP {Cep} não encontrado no cache. Tentando buscar no banco de dados.", cep);
             cepEntity = await _cepRepository.GetByCepAsync(cep);
 
             if (cepEntity != null)
             {
                 _logger.LogInformation("CEP {Cep} encontrado no banco de dados. Armazenando no Redis Cache.", cep);
-
+                // Salva no cache para futuras buscas serem mais rápidas
                 await _cache.SetAsync(cep, cepEntity);
                 return CepResponseDto.FromEntity(cepEntity);
             }
 
+            // Passo 3: Se não está em nenhum banco, consulta a API externa
             _logger.LogInformation("CEP {Cep} não encontrado no banco de dados. Consultando BrasilAPI.", cep);
             BrasilApiCepResponse? brasilApiCep = null;
             try
@@ -75,6 +78,7 @@ namespace ProjetoCep.Api.Services
                 throw new CepNotFoundException($"CEP {cep} não encontrado.");
             }
 
+            // Constrói a entidade para salvar nos bancos de dados
             cepEntity = new CepEntity
             {
                 Cep = brasilApiCep.Cep.Replace("-", ""),
@@ -89,9 +93,9 @@ namespace ProjetoCep.Api.Services
                 Siafi = null
             };
 
+            // Salva o novo CEP no MongoDB e no Cache para futuras requisições
             _logger.LogInformation("Persistindo e armazenando no cache CEP {Cep} obtido da BrasilAPI.", cep);
             await _cepRepository.AddOrUpdateAsync(cepEntity);
-
             await _cache.SetAsync(cep, cepEntity);
 
             return CepResponseDto.FromEntity(cepEntity);

@@ -17,6 +17,15 @@ namespace WebAPIRedisCache.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Busca informações de um endereço a partir do CEP.
+        /// </summary>
+        /// <param name="cep">O CEP a ser consultado (deve conter 8 dígitos numéricos).</param>
+        /// <returns>As informações do endereço correspondente ao CEP.</returns>
+        /// <response code="200">Retorna as informações do CEP.</response>
+        /// <response code="400">Se o CEP fornecido for inválido.</response>
+        /// <response code="404">Se o CEP não for encontrado.</response>
+
         [HttpGet("{cep}")]
         //[ProducesResponseType(StatusCodes.Status200OK)]
         //[ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -49,7 +58,7 @@ namespace WebAPIRedisCache.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Ocorreu um erro inesperado ao processar a requisição para o CEP {Cep}.", cep);
-                return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Ocorreu um erro interno no servidor." + ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Ocorreu um erro interno no servidor." + ex.Message });
             }
         }
     }

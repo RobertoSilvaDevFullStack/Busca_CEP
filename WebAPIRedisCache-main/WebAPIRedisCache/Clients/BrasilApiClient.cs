@@ -19,7 +19,7 @@ namespace ProjetoCep.Api.Clients
             _logger.LogInformation("Consultando BrasilAPI para o CEP: {Cep}", cep);
             try
             {
-                var response = await _httpClient.GetAsync($"v1/{cep}");
+                var response = await _httpClient.GetAsync(cep);
 
                 if (response.IsSuccessStatusCode)
                 {
